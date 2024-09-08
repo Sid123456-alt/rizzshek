@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mogged</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+        img:hover {
+            transform: scale(1.1);
+        }
+        .mogged-text {
+            margin-top: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #ff3399;
+            font-weight: bold;
+        }
+        /* Flicker effect for glow-up */
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .flicker {
+            animation: flicker 0.5s linear;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Image of friend -->
+    <img id="main-image" src="cooked.jpg" alt="Friend Image">
+    <!-- Text to trigger the click -->
+    <div class="mogged-text" id="mogged-text" onclick="getMogged()">Click to get mogged!</div>
+
+    <!-- Audio -->
+    <audio id="beat-drop" src="FUNKED-UP-SLOWED.mp3"></audio>
+
+    <script>
+        function getMogged() {
+            // Change the image to 'mogged.jpg' with a flicker effect
+            var img = document.getElementById('main-image');
+            img.classList.add('flicker'); // Add flicker effect
+            
+            setTimeout(function() {
+                img.src = 'mogged.jpg'; // Change image source
+                img.classList.remove('flicker'); // Remove flicker effect
+            }, 500); // Duration of the flicker effect
+            
+            // Play the beat drop audio
+            var audio = document.getElementById('beat-drop');
+            audio.play();
+
+            // Remove the "Click to get mogged!" text
+            var moggedText = document.getElementById('mogged-text');
+            moggedText.style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
